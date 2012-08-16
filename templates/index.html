@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Expense Splitter{% endblock %}
+{% block body %}
+{{ super() }}
+<h2>Expenses</h2>
+<table id="expenselist">
+  <tr>
+    <th>Expense</th><th>Cost</th><th>Paid by</th>
+  </tr>
+  {% for expense in expenses %}
+  <tr>
+    <td>{{ expense.name }}</td><td>{{ expense.cost }}</td><td>{{ expense.paidby.getName() }}</td>
+  </tr>
+  {% endfor %}
+</table>
+<a href='/addexpense' alt="Add an expense">Add an expense</a>
+<h2>Balances</h2>
+<table id="users">
+  <tr>
+    <th>Name</th><th>Current balance</th>
+  </tr>
+  {% for user in users %}
+  <tr>
+    <td>{{ user.name }}</td><td>{{ user.balance }}</td>
+  </tr>
+  {% endfor %}
+</table>
+<a href='/adduser' alt="Add a user">Add new user</a>
+{% endblock %}

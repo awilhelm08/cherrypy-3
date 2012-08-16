@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Add an Expense{% endblock %}
+{% block body %}
+{{ super() }}
+{% if added %}
+<h2>Expense added successfully</h2>
+Add another, or <a href='/'>return to home</a>
+<br/><br/>
+{% endif %}
+<form method="get" name="addexpense" action="/addexpense">
+  Name of expense: <input type="text" name="name"/><br/>
+  Amount:          <input type="text" name="amount"/><br/>
+  Paid by:         <select name="paidby">
+                      {% for user in users %}
+                      <option value="{{ user.name }}">{{ user.name}}</option>
+                      {% endfor %}
+                   </select><br/>
+                   <input type="submit"/>
+{% endblock %}
